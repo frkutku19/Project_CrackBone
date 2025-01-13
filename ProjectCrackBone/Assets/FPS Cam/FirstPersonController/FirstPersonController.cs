@@ -108,7 +108,7 @@ public class FirstPersonController : MonoBehaviour
         }
     }
 
-    private void Jump()
+    void Jump()
     {
         if (isGrounded)
         {
