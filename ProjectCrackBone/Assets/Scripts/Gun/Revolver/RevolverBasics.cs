@@ -10,9 +10,12 @@ public class RevolverBasics : MonoBehaviour
     {
 
         RevolverStats.TryAdd("Ammo", 6);
-        RevolverStats.TryAdd("Damage", 60);
+        RevolverStats.TryAdd("Damage", 40);
         RevolverStats.TryAdd("FireCooldown", 2);
         RevolverStats.TryAdd("Range", 8);
         RevolverStats.TryAdd("MagazineSize", 6);
+        RevolverStats.TryAdd("MeleeDamage", 60);
+        RevolverStats.TryAdd("MeleeRange", .2f);
+        RevolverStats.TryAdd("MeleeCoolDown", 1);
     }
 }

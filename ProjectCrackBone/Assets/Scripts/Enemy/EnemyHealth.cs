@@ -20,7 +20,12 @@ public class EnemyHealth : MonoBehaviour
         stats.enemyStats["Health"] -= RevolverBasics.RevolverStats["Damage"];
         SliderUpdate();
         IsDead();
-        Debug.Log("Hasar Verdin" + "Düþman Caný: " + stats.enemyStats["Health"]);
+    }
+    public void GetMeleeHit()
+    {
+        stats.enemyStats["Health"] -= RevolverBasics.RevolverStats["MeleeDamage"];
+        SliderUpdate();
+        IsDead();
     }
     void SliderUpdate()
     {

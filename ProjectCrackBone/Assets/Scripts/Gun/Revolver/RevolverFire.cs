@@ -7,7 +7,6 @@ using UnityEngine.UI;
 public class RevolverFire : RevolverBasics,IFire
 {
     [SerializeField] Transform firePoint;
-    [SerializeField] KeyCode fireKey;
     Animator anim;
     [SerializeField] Image crosshair;
 
@@ -45,16 +44,13 @@ public class RevolverFire : RevolverBasics,IFire
 
     void Update()
     {
-        Shoot(fireKey, firePoint);
-        Debug.DrawRay(firePoint.position, transform.TransformDirection(Vector3.forward) * RevolverStats["Range"], Color.red);
+        Shoot(KeyCode.Mouse0, firePoint);
     }
 
     void AmmoCheck()
     {
         if (RevolverStats["Ammo"] == 0)
         {
-            Debug.Log("Mermin Bitti Amk");
-            anim.SetTrigger("Reload");
             StartCoroutine(Reload());
         }
         else if (RevolverStats["Ammo"] < 0)
@@ -65,6 +61,7 @@ public class RevolverFire : RevolverBasics,IFire
 
     IEnumerator Reload()
     {
+        anim.SetTrigger("Reload");
         Debug.Log("Mermi Deðiþtiriliyor...");
         yield return new WaitForSeconds(2);
         RevolverStats["Ammo"] = RevolverStats["MagazineSize"];
