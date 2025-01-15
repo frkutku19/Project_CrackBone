@@ -13,7 +13,7 @@ public class FirstPersonController : MonoBehaviour
     [Header ("Cam")]
     public Camera playerCamera;
     public float fov = 60f;
-    public bool cameraCanMove = true;
+    public static bool cameraCanMove = true;
     public float mouseSensitivity = 2f;
     public float maxLookAngle = 50f;
 
