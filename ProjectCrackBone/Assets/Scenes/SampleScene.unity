@@ -67428,6 +67428,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d90ba6530d9bfda47abb4610956b2f44, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  revolver: {fileID: 6971496768528190113}
   playerCamera: {fileID: 4459864850515952069}
   fov: 60
   cameraCanMove: 1

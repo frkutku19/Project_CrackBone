@@ -6,6 +6,9 @@ using UnityEngine.UI;
 public class FirstPersonController : MonoBehaviour
 {
     private Rigidbody rb;
+    [Header("Gun(s)")]
+    public GameObject revolver;
+    Animator revolverAnim;
 
     [Header ("Cam")]
     public Camera playerCamera;
@@ -54,6 +57,7 @@ public class FirstPersonController : MonoBehaviour
         Cursor.lockState = CursorLockMode.Locked;
         crosshairObject.sprite = crosshairImage;
         crosshairObject.color = crosshairColor;
+        revolverAnim = revolver.GetComponent<Animator>();
     }
 
     private void Update()
@@ -86,6 +90,14 @@ public class FirstPersonController : MonoBehaviour
             else
             {
                 Walking(targetVelocity);
+            }
+            if (Input.GetAxis("Horizontal") > .5f || Input.GetAxis("Vertical") > .5f)
+            {
+                revolverAnim.SetFloat("Speed", 1);
+            }
+            else
+            {
+                revolverAnim.SetFloat("Speed", 0);
             }
         }
     }
@@ -139,7 +151,6 @@ public class FirstPersonController : MonoBehaviour
         velocityChange.x = Mathf.Clamp(velocityChange.x, -maxVelocityChange, maxVelocityChange);
         velocityChange.z = Mathf.Clamp(velocityChange.z, -maxVelocityChange, maxVelocityChange);
         velocityChange.y = 0;
-
         rb.AddForce(velocityChange, ForceMode.VelocityChange);
     }
 
