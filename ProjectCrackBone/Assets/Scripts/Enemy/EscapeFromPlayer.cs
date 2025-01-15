@@ -7,15 +7,16 @@ public class EscapeFromPlayer : MonoBehaviour
 
     private NavMeshAgent agent;
     [SerializeField] Transform playerTransform;
-    [SerializeField] float range;
     [SerializeField] float multiplier;
     Animator anim;
+    EnemyStats stats;
 
     void Start()
     {
         agent = GetComponent<NavMeshAgent>();
         anim = GetComponent<Animator>();
-        agent.speed = Random.Range(2f, 4f);
+        stats = GetComponent<EnemyStats>();
+        agent.speed = stats.enemyStats["Speed"];
     }
 
     void Update()
@@ -27,7 +28,7 @@ public class EscapeFromPlayer : MonoBehaviour
     {
         Vector3 runTo = transform.position + (transform.position - playerTransform.position * multiplier);
         float distance = Vector3.Distance(transform.position, playerTransform.position);
-        if (distance < range)
+        if (distance < stats.enemyStats["Range"])
         {
             agent.SetDestination(runTo);
             anim.SetFloat("Speed", 1);

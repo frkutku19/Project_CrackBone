@@ -1,3 +1,4 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -16,5 +17,10 @@ public class PublicMethods : MonoBehaviour
         material.color = newColor;
         yield return new WaitForSeconds(.1f);
         material.color = firstColor;
+    }
+
+    static public GameObject[] MakeGameObjectList(string tag)
+    {
+        return GameObject.FindGameObjectsWithTag(tag);
     }
 }

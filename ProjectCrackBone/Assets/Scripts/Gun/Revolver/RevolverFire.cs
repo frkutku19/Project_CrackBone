@@ -25,23 +25,21 @@ public class RevolverFire : RevolverBasics,IFire
             {
                 if (Hit.collider.gameObject.layer == LayerMask.NameToLayer("Enemy"))
                 {
-                    Debug.Log("Düþmana Vurdun");
                     StartCoroutine(PublicMethods.ColorChange(crosshair, Color.white, Color.red));
-                }
-                else if (Hit.collider.gameObject.layer == LayerMask.NameToLayer("Default"))
-                {
-                    Debug.Log("Ateþ Edildi");
+                    Hit.collider.gameObject.GetComponent<EnemyHealth>().GetHit();
                 }
                 
             }
             RevolverStats["Ammo"]--;
-
-            Debug.Log("Kalan Mermi: " + RevolverStats["Ammo"]);
             AmmoCheck();
             if (RevolverStats["Ammo"] > 0)
             {
                 anim.SetTrigger("Shoot");
             }
+        }
+        if (Input.GetKeyDown(KeyCode.R) && RevolverStats["Ammo"] < 6)
+        {
+            StartCoroutine(Reload());
         }
     }
 
@@ -68,7 +66,7 @@ public class RevolverFire : RevolverBasics,IFire
     IEnumerator Reload()
     {
         Debug.Log("Mermi Deðiþtiriliyor...");
-        yield return new WaitForSeconds(RevolverStats["ReloadTime"]);
+        yield return new WaitForSeconds(2);
         RevolverStats["Ammo"] = RevolverStats["MagazineSize"];
         Debug.Log("Mermi Deðiþtirildi");
     }
