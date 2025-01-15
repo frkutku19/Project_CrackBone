@@ -17,7 +17,7 @@ public class RevolverFire : RevolverBasics,IFire
     }
     public void Shoot(KeyCode fireKey, Transform firePoint)
     {
-        if (Input.GetKeyDown(fireKey) && RevolverStats["Ammo"] >= 0)
+        if (Input.GetKeyDown(fireKey) && RevolverStats["Ammo"] > 0)
         {
             Debug.DrawRay(firePoint.position, transform.TransformDirection(Vector3.forward) * RevolverStats["Range"], Color.red);
             int layerMask = LayerMask.GetMask("Enemy","Default");
